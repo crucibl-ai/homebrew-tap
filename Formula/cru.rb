@@ -1,0 +1,64 @@
+# Homebrew formula for cru, rendered by packaging/homebrew/render.sh from a
+# release's SHA256SUMS and pushed to crucibl-ai/homebrew-tap as Formula/cru.rb
+# by .github/workflows/release.yml. Do not edit the copy in the tap by hand;
+# change this template and cut a release (docs/release.md).
+#
+# The assets are the bun-compiled static binaries release.yml publishes to the
+# internal release mirror under cru/core/<version>/ (DESIGN §3.4, §7.2), the
+# same files `cru self-update` reads. Each is a bare executable, not an
+# archive, so Homebrew stages it under its asset name and `install` renames it.
+#
+# The mirror's certificate chains to the Crucibl internal root CA, which the
+# MDM pushes to every managed Mac. Homebrew downloads with the system curl
+# (/usr/bin/curl, Secure Transport), which trusts the system keychain, so the
+# root is honoured and no extra setup is needed. HOMEBREW_FORCE_BREWED_CURL
+# would switch to a curl with its own CA bundle and fail verification; on
+# Linux, or on an unmanaged machine, install the root into the CA bundle first
+# (docs/mirror.md). The mirror is reachable from the office network and the
+# tailnet only.
+class Cru < Formula
+  desc "One command-line client for Crucibl: login, and every product's commands as self-updating plugins"
+  homepage "https://github.com/crucibl-ai/cru"
+  version "0.1.0"
+
+  on_macos do
+    on_arm do
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.0/cru-darwin-arm64"
+      sha256 "06598e39f7f0675e614630216afdcab224b194d452a74160208aedb8718d2f43"
+    end
+    on_intel do
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.0/cru-darwin-x64"
+      sha256 "16e382f19541d884f50fa84929271ad9d646cc3cae27d41d362d80517a157c07"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.0/cru-linux-arm64"
+      sha256 "c3abb69e1867978c726108d3f748daac53d87825387b0253e97e0beef3365b22"
+    end
+    on_intel do
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.0/cru-linux-x64"
+      sha256 "d6938bb6e9a4c85164e3cc50c1d3cd66489abb22a304a1c0af6e87fa10494e45"
+    end
+  end
+
+  def install
+    os = OS.mac? ? "darwin" : "linux"
+    arch = Hardware::CPU.arm? ? "arm64" : "x64"
+    bin.install "cru-#{os}-#{arch}" => "cru"
+  end
+
+  def caveats
+    <<~EOS
+      Log in once with
+        cru login
+      Every product's commands are plugins the core installs on first use:
+        cru help
+    EOS
+  end
+
+  test do
+    assert_match "cru", shell_output("#{bin}/cru --help")
+  end
+end
