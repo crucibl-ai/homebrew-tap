@@ -19,27 +19,27 @@
 class Cru < Formula
   desc "One command-line client for Crucibl: login, and every product's commands as self-updating plugins"
   homepage "https://github.com/crucibl-ai/cru"
-  version "0.1.3"
+  version "0.1.4"
 
   on_macos do
     on_arm do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.3/cru-darwin-arm64"
-      sha256 "b71ca93b685fb943613f5298aa0c0054c54ae73ec86f3a7f902a3d97f88eef58"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.4/cru-darwin-arm64"
+      sha256 "0ecc314ca731f214fc1964222e0851d2494dfb24a0771d7cf8f0273780d36eae"
     end
     on_intel do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.3/cru-darwin-x64"
-      sha256 "3953fa35d881820844479ad23b6becb92804366991710c02368170d362a8a6b3"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.4/cru-darwin-x64"
+      sha256 "17701b2095eda7f245f7b97951003104ef41516589d9a86972b43329d0d16e09"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.3/cru-linux-arm64"
-      sha256 "c01fc5cb7d790dcfe3d738c6111a22ee62e2530ea6c3ba7cd2a67fb995482c0a"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.4/cru-linux-arm64"
+      sha256 "5d72c94a154d5846a0edf2949692b3357e0d701d7cf487176ebcec5561477a01"
     end
     on_intel do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.3/cru-linux-x64"
-      sha256 "8a825860dfb0558ec3e932ba09481e95332f30d29bb684e097e910a0257a5a21"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.1.4/cru-linux-x64"
+      sha256 "8ac18a5736e23d58c5453fdd6f85ea0b4f5eb584f47f9688fe7624f229d73df0"
     end
   end
 
