@@ -5,7 +5,7 @@
 #
 # The assets are the bun-compiled static binaries release.yml publishes to the
 # internal release mirror under cru/core/<version>/ (DESIGN §3.4, §7.2), the
-# same files `cru self-update` reads. Each is a bare executable, not an
+# same files `cru update` reads. Each is a bare executable, not an
 # archive, so Homebrew stages it under its asset name and `install` renames it.
 #
 # The mirror's certificate chains to the Crucibl internal root CA, which the
@@ -19,27 +19,27 @@
 class Cru < Formula
   desc "One command-line client for Crucibl: login, and every product's commands as self-updating plugins"
   homepage "https://github.com/crucibl-ai/cru"
-  version "0.1.5"
+  version "0.2.0"
 
   on_macos do
     on_arm do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.5/cru-darwin-arm64"
-      sha256 "5fdf1bba264b6037792364b50851a40c35ab42f552b385236cf69550f1b00bb6"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.2.0/cru-darwin-arm64"
+      sha256 "86feef8f182d95e1b34a19776bea586c5a3c2c5064c656fbb2b1c331a36404cb"
     end
     on_intel do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.5/cru-darwin-x64"
-      sha256 "480bd2592ff1a30377d8240841e3e1614f47115a12b0cc5ee033f89f2e82afc6"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.2.0/cru-darwin-x64"
+      sha256 "d48b80d792c9902acc0f0432a3e05c73bbfdbb8d0191914c00fb9fbe370d12f9"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.5/cru-linux-arm64"
-      sha256 "291658c92e9c5048609211086f11f5bfac80c620d4deb6677324f3104cc9767c"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.2.0/cru-linux-arm64"
+      sha256 "0459bef72a6bb8f6812985aca5de44ae01268af17b337fa64469980518e80001"
     end
     on_intel do
-      url "https://mirror.corp.crucibl.internal/cru/core/0.1.5/cru-linux-x64"
-      sha256 "879c524544e964a75a1709e3505f1d90e07b29b2d1124ede889de3f669c38ba7"
+      url "https://mirror.corp.crucibl.internal/cru/core/0.2.0/cru-linux-x64"
+      sha256 "37bc3b9afc8b5a53f3167b86be5171b8ffe98e469d21206187245c7b4941443c"
     end
   end
 
